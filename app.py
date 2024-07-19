@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for
 import google.generativeai as genai
-
+from dotenv import load_dotenv
+import os
 # Configure Google API
-genai.configure(api_key="AIzaSyDrefuYMMd23jgptIbmyu7ZbdggrREDfWI")
+load_dotenv()
+genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
 
 generation_config = {
     "temperature": 1,
@@ -90,4 +92,4 @@ def ask_question():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
