@@ -74,7 +74,7 @@ def ask_question():
         output = ""
 
         for chunk in response:
-            print(chunk.text)
+            # print(chunk.text)
             output += chunk.text
 
         response_data = {
