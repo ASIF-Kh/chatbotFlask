@@ -42,7 +42,7 @@
 }
 
 body {
-    background-image: url("{{url_for('static', filename='bg.jpg')}}");
+    /* background-image: url("{{url_for('static', filename='bg.jpg')}}"); */
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -287,8 +287,37 @@ code {
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/markdown-it/dist/markdown-it.min.js"></script>
-     
+<script src="bg.js"></script>
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    fetchRandomBackground();
+    // Your existing functions
+    document.querySelector('#submitBtn').addEventListener('click', () => {
+        let input = document.querySelector('#userText').value;
+        if (input) {
+            chat_ajax();
+        }
+    });
+    document.querySelector('#gamesButton').addEventListener('click', () => {
+        chat_ajax("Hey Chatbot! start the trivia");
+    });
+    document.querySelector('#factsButton').addEventListener('click', () => {
+        chat_ajax("Give me different types of fascinating facts about sustainable development! each time it should be unique🌍✨ 🚀🌿");
+    });
+});
+
+function fetchRandomBackground() {
+    const accessKey = 'maeVCiGVJiwAUHObtj-9vQAyhtafC_ogTtf5TjLtTQo'; // Use your actual access key
+    const url = `https://api.unsplash.com/photos/random?query=landscape&orientation=landscape&client_id=${accessKey}`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            document.body.style.backgroundImage = `url('${data.urls.regular}')`;
+        })
+        .catch(err => console.error('Error fetching image from Unsplash:', err));
+}
+
     let chatCard = document.querySelector('#scroll');
     chatCard.scrollTop = chatCard.scrollHeight;
 
@@ -397,6 +426,7 @@ code {
                 console.log("There was an error!");
             }
         });
+
     }
 </script>
 
