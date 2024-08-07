@@ -271,7 +271,7 @@ code {
                 alt="avatar 3" style="width: 40px; height: 100%;">
                 <form class="form d-flex align-items-center">
                     <input class="form-control ms-2" type="text" id="userText" name="text" placeholder="Share your question/response">
-                    <span id="submitBtn" class="ms-2 btn btn-floating text-white"><i class="fas fa-paper-plane"></i></span>
+                    <button id="submitBtn" class="ms-2 btn btn-floating text-white"><i class="fas fa-paper-plane"></i></button>
                 </form>                
                 <button id="gamesButton" class="btn btn-success ms-2">Games</button>
                 <button id="factsButton" class="btn btn-info ms-2">Facts</button>
@@ -298,6 +298,7 @@ code {
         if(input){
         chat_ajax()}
     })
+
 
     document.addEventListener('DOMContentLoaded', function(){
         document.querySelector('#submitBtn').addEventListener('click', () => {
